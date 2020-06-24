@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock, Paper or Scissors</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+      function computerPlay() {
+          let choices = ['rock', 'paper', 'scissors'];
+          return choices[Math.floor(Math.random() * choices.length)];
+      }
+
+      function playRound(playerSelection,computerSelection) {
+        playerSelection = playerSelection.toLowerCase();
+        if (playerSelection == computerSelection) {
+            let score = [0, 0];
+            return score;
+        }
+        else if ((playerSelection =='rock' && computerSelection=='paper') || (playerSelection=='paper' && computerSelection=='scissors') || (playerSelection=='scissors' && computerSelection=='rock')) {
+            let score = [0, 1];
+            return score;
+        }
+        else if ((playerSelection =='paper' && computerSelection=='rock') || (playerSelection=='scissors' && computerSelection=='paper') || (playerSelection=='rock' && computerSelection=='scissors'))  {
+            let score = [1, 0];
+            return score;
+        }
+        else {
+            return "You have entered the wrong information. Please choose rock, paper or scissors."
+        }
+      }
+
+      function inputPlayer() {
+        return window.prompt("What do you choose ?", "Rock, Paper or Scissors");
+      }
+
+      function game() {
+          let playerScore = 0;
+          let computerScore = 0;
+          let score = playRound(inputPlayer(), computerPlay());
+          playerScore += score[0];
+          computerScore += score[1];
+          console.log(score);
+          score = playRound(inputPlayer(), computerPlay());
+          playerScore += score[0];
+          computerScore += score[1];
+          console.log(score);
+          score = playRound(inputPlayer(), computerPlay());
+          playerScore += score[0];
+          computerScore += score[1];
+          console.log(score);
+          score = playRound(inputPlayer(), computerPlay());
+          playerScore += score[0];
+          computerScore += score[1];
+          console.log(score);
+          score = playRound(inputPlayer(), computerPlay());
+          playerScore += score[0];
+          computerScore += score[1];
+          console.log(score);
+          console.log(playerScore);
+          console.log(computerScore);
+          if (playerScore > computerScore) {
+              return "Congratulations, you have won!"
+          }
+          else if (playerScore < computerScore) {
+              return "Sorry but you lost, better luck next time!"
+          }
+          else {
+              return "This is a tie. Play another round"
+          }
+      }
+
+  </script>
+</body>
+</html>
